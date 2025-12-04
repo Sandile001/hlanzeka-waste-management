@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLANZEKA | Waste Management - Trash to Cash</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --dark-green: #1b5e20;
+            --accent-gold: #ffc107;
+            --dark-gray: #333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #f9f9f9;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--primary-green);
+        }
+        
+        .logo-text .tagline {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+        
+        .logo-icon {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-green);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+        /* Hero Section */
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 0 120px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--dark-gray);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-gold);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+        /* Sections */
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-gold);
+        }
+        /* About */
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .new-badge {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--dark-gray);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        /* Services */
+        
+        .services {
+            background-color: var(--light-gray);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background-color: var(--light-green);
+            color: white;
+            font-size: 2.5rem;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        /* Contact Methods */
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-method {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-method i {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+        
+        .contact-method h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        /* Social Media Styles */
+        
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark-gray);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-link.facebook {
+            color: #1877F2;
+        }
+        
+        .social-link.instagram {
+            color: #E4405F;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+        }
+        
+        .social-link.linkedin {
+            color: #0A66C2;
+        }
+        
+        .social-link i {
+            font-size: 1.5rem;
+        }
+        /* Process */
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-gold);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+        }
+        /* Contact */
+        
+        .contact {
+            background-color: var(--dark-green);
+            color: white;
+        }
+        
+        .contact .section-title h2 {
+            color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-gold);
+            color: var(--dark-gray);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #ffb300;
+        }
+        /* Footer */
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            color: var(--light-green);
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-social a:hover {
+            color: var(--accent-gold);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            .social-media {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                gap: 15px;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero {
+                padding: 150px 0 100px;
+            }
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .process-steps {
+                flex-direction: column;
+            }
+            .social-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            .social-link i {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+            .social-media {
+                flex-direction: column;
+                align-items: center;
+            }
+            .social-link {
+                width: 80%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-recycle"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>HLANZEKA</h1>
+                    <div class="tagline">WASTE MANAGEMENT</div>
+                </div>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Turning Your Trash Into Cash</h2>
+            <p>HLANZEKA Waste Management provides innovative, sustainable waste solutions that benefit both the environment and your bottom line. We transform waste streams into revenue streams through recycling, recovery, and responsible disposal.</p>
+            <a href="#contact" class="cta-button">Get A Free Quote</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About HLANZEKA</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="new-badge">ESTABLISHED 2023</div>
+                    <h3>Innovative Waste Management Solutions</h3>
+                    <p>HLANZEKA Waste Management is a <strong>newly launched company in 2023</strong>, bringing fresh ideas and modern technology to the waste management industry. Our "Trash to Cash" philosophy is at the core of everything we do, turning
+                        environmental responsibility into economic opportunity.</p>
+                    <p>Based in Bulawayo, Zimbabwe, we're committed to transforming waste management practices with efficient, sustainable solutions that create value from waste materials.</p>
+                    <p>As a new company, we're agile, responsive, and committed to providing personalized service to each of our clients. We're building our reputation on transparency, efficiency, and delivering real financial returns from waste management.</p>
+
+                    <!-- Social Media Links in About Section -->
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/SandileQuincyNcube" target="_blank" class="social-link facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://www.instagram.com/_sqhazard_01" target="_blank" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/Sandile-ncube" target="_blank" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1250&q=80" alt="Waste management facility">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Recycling Solutions</h3>
+                        <p>Comprehensive recycling programs for paper, plastic, glass, metal, and electronics. We maximize recovery rates to increase your revenue from recyclables.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Industrial Waste Management</h3>
+                        <p>Customized waste handling solutions for manufacturing and industrial facilities, including hazardous material management and byproduct recovery.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Waste Collection & Transport</h3>
+                        <p>Reliable scheduled and on-demand waste collection services with modern, eco-friendly vehicles equipped for all types of waste materials.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Waste-to-Energy Conversion</h3>
+                        <p>Advanced technology to convert non-recyclable waste into clean energy, reducing landfill use while generating power and revenue.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Waste Audit & Consulting</h3>
+                        <p>Detailed waste stream analysis to identify cost-saving opportunities and improve sustainability performance for your business.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Sustainability Programs</h3>
+                        <p>Development and implementation of comprehensive sustainability initiatives to reduce environmental impact and enhance corporate responsibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Methods Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>We're a new company eager to serve you! Choose your preferred way to get in touch.</p>
+            </div>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fas fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our waste management specialists</p>
+                    <div style="margin-top: 15px;">
+                        <a href="tel:+263782467472" class="contact-link">+263 78 246 7472</a><br>
+                        <a href="tel:+263710474607" class="contact-link">+263 71 047 4607</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>Send us a message and we'll respond within 24 hours</p>
+                    <a href="mailto:quincysandile01@gmail.com" class="contact-link">quincysandile01@gmail.com</a>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Chat with us on WhatsApp for quick responses</p>
+                    <a href="https://wa.me/263782467472" target="_blank" class="contact-link">+263 78 246 7472</a>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Visit Us</h3>
+                    <p>Our office location in Bulawayo</p>
+                    <div class="contact-link">4347 Emganwini, Bulawayo</div>
+                </div>
+            </div>
+
+            <!-- Social Media in Contact Section -->
+            <div style="text-align: center; margin-top: 50px;">
+                <h3>Follow Us on Social Media</h3>
+                <p>Stay updated with our latest services, tips, and success stories</p>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/SandileQuincyNcube" target="_blank" class="social-link facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Sandile Quincy Ncube</span>
+                    </a>
+                    <a href="https://www.instagram.com/_sqhazard_01" target="_blank" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>@_sqhazard_01</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/Sandile-Ncube" target="_blank" class="social-link linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        <span>Sandile Ncube</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Your Free Quote</h2>
+                <p>Fill out the form below and we'll provide a customized waste management plan for your business</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Why Choose HLANZEKA?</h3>
+                    <p>As a new company established in 2023, we offer:</p>
+                    <ul style="margin: 20px 0; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">Modern, efficient technology</li>
+                        <li style="margin-bottom: 10px;">Personalized service attention</li>
+                        <li style="margin-bottom: 10px;">Competitive pricing for new clients</li>
+                        <li style="margin-bottom: 10px;">Quick response times</li>
+                        <li>Flexible solutions tailored to your needs</li>
+                    </ul>
+
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 4347 Emganwini, Bulawayo, Zimbabwe</p>
+                        <p><i class="fas fa-phone"></i>
+                            <a href="tel:+263782467472" style="color: var(--accent-gold); text-decoration: none;">+263 78 246 7472</a><br>
+                            <a href="tel:+263710474607" style="color: var(--accent-gold); text-decoration: none; margin-left: 24px;">+263 71 047 4607</a>
+                        </p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:quincysandile01@gmail.com" style="color: var(--accent-gold); text-decoration: none;">quincysandile01@gmail.com</a></p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 8am-6pm, Sat: 9am-2pm</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="business">Business Name</label>
+                            <input type="text" id="business">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service">
+                                <option value="">Select a service</option>
+                                <option value="recycling">Recycling Solutions</option>
+                                <option value="industrial">Industrial Waste Management</option>
+                                <option value="collection">Waste Collection</option>
+                                <option value="energy">Waste-to-Energy</option>
+                                <option value="consulting">Waste Audit & Consulting</option>
+                                <option value="sustainability">Sustainability Programs</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tell us about your waste management needs</label>
+                            <textarea id="message" placeholder="e.g., We produce approximately 5 tons of waste monthly and are looking for recycling solutions..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Get My Free Quote</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <i class="fas fa-recycle"></i>
+            </div>
+            <div class="footer-text">
+                <h3>HLANZEKA WASTE MANAGEMENT</h3>
+                <p>Transforming waste into value through innovative, sustainable solutions.</p>
+                <p style="margin-top: 15px; color: var(--accent-gold);">Established 2023 | Based in Bulawayo, Zimbabwe</p>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://www.facebook.com/SandileQuincyNcube" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/_sqhazard_01" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/Sandile-ncube" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:quincysandile01@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/263782467472" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> HLANZEKA Waste Management. All rights reserved. | Trash to Cash™</p>
+                <p style="margin-top: 10px;">4347 Emganwini, Bulawayo | Email: quincysandile01@gmail.com | Tel: +263 78 246 7472 / +263 71 047 4607</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('show') ?
+                '<i class="fas fa-times"></i>' :
+                '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const business = document.getElementById('business').value;
+            const service = document.getElementById('service').value;
+
+            // In a real application, you would send this data to a server
+            // For this demo, we'll show a confirmation and simulate sending
+            const quoteNumber = Math.floor(Math.random() * 10000) + 1000;
+
+            // Create a custom message
+            let message = `Thank you ${name}!`;
+            if (business) message += ` from ${business}`;
+            message += `.\n\nWe have received your request for a ${service ? service : 'waste management'} quote (Reference #${quoteNumber}).`;
+            message += `\n\nAs a new company, we prioritize new client inquiries and will contact you within 24 hours at ${email} to discuss your needs.`;
+            message += `\n\nThank you for considering HLANZEKA Waste Management!`;
+
+            alert(message);
+
+            // Reset the form
+            contactForm.reset();
+        });
+
+        // Add animation to service cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and contact methods
+        document.querySelectorAll('.service-card, .contact-method, .social-link').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(element);
+        });
+
+        // Current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
